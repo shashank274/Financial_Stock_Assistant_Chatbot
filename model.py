@@ -50,3 +50,89 @@ def plot_stock_price(ticker):
     plt.grid=True
     plt.savefig('stock.png')
     plt.close()
+    
+functions = [
+    
+    {
+        'name' : 'get_stock_price',
+        'description' : 'Gets the latest stock price given the ticker symbol of the company',
+        'parameters' : {
+            'type' : 'object',
+            'properties' : {
+                'ticker' : {'type' : 'string', 'description' : 'The stock ticker symbol for a company (for example AAPL for Apple).'
+                 }
+            },
+            'required' : ['ticker']
+        }
+    },
+    
+    {
+        'name' : 'Calculate_SMA',
+        'description' : 'Calculate the Simple Moving Average for a given stock ticker and a window',
+        'parameters' : {
+            'type' : 'object',
+            'properties' : {
+                'ticker' : {'type' : 'string', 'description' : 'The stock ticker symbol for a company (for example AAPL for Apple).'
+                 },
+                'window' :{'type' : 'string', 'description' : 'The timeframe to consider when calculating the SMA '}
+            },
+            'required' : ['ticker','window']
+        }
+    },
+    
+    {
+        'name' : 'Calculate_EMA',
+        'description' : 'Calculate the Exponential Moving Average for a given stock ticker and a window',
+        'parameters' : {
+            'type' : 'object',
+            'properties' : {
+                'ticker' : {'type' : 'string', 'description' : 'The stock ticker symbol for a company (for example AAPL for Apple).'
+                 },
+                'window' :{'type' : 'string', 'description' : 'The timeframe to consider when calculating the EMA '}
+            },
+            'required' : ['ticker','window']
+        }
+    },
+    
+    {
+        'name' : 'Calculate_RSI',
+        'description' : 'Calculate the RSI for a given stock ticker ',
+        'parameters' : {
+            'type' : 'object',
+            'properties' : {
+                'ticker' : {'type' : 'string', 'description' : 'The stock ticker symbol for a company (for example AAPL for Apple).'
+                 },
+                'window' :{'type' : 'string', 'description' : 'The timeframe to consider when calculating the SMA '}
+            },
+            'required' : ['ticker']
+        }
+    },
+    
+    {
+        'name' : 'Calculate_MACD',
+        'description' : 'Calculate the MACD for a given stock ticker',
+        'parameters' : {
+            'type' : 'object',
+            'properties' : {
+                'ticker' : {'type' : 'string', 'description' : 'The stock ticker symbol for a company (for example AAPL for Apple).'
+                 },
+                'window' :{'type' : 'string', 'description' : 'The timeframe to consider when calculating the SMA '}
+            },
+            'required' : ['ticker']
+        }
+    },
+    
+    {
+        'name' : 'plot_stock_price',
+        'description' : 'Plot the stockk price for the last year given the ticker symbol of the company',
+        'parameters' : {
+            'type' : 'object',
+            'properties' : {
+                'ticker' : {'type' : 'string', 'description' : 'The stock ticker symbol for a company (for example AAPL for Apple).'
+                 },
+                'window' :{'type' : 'string', 'description' : 'The timeframe to consider when calculating the SMA '}
+            },
+            'required' : ['ticker']
+        }
+    },
+]
