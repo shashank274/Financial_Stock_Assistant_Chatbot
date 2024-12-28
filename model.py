@@ -194,6 +194,10 @@ if user_input:
                     model = 'gpt-3.5=turbo-0613',
                     messages = st.session_state['messages']
                 )
-                st.text(second_response['messages'].append('role' : 'assistant', 'content' : response_message['content']))
-                
+                st.text(second_response['choices'][0]['message']['content'])
+                st.session_state['messages'].append({'role' : 'assistant', 'content' : second_response['choices'][0]['message']['content']})
+        else:
+            st.text(response_message['content'])
+            st.session_state['messages'].append({'role' : 'assistnat', 'content' : response_message['content'] })            
     except:
+        st.text('Try Again')
