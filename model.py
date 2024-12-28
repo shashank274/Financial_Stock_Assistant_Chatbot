@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import yfinance as yf
 
-open.api_key = open('API_KEY','r').read()
+openai.api_key = open('API_KEY','r').read()
 
 def get_stock_price(ticker):
     return str(yf.Ticker(ticker).history(period='1y').iloc[-1].Close)
@@ -43,7 +43,7 @@ def calculate_MACD(ticker):
 def plot_stock_price(ticker):
     data = yf.Ticker(ticker).history(period='1y').Close
     plt.figure(figsize=(10,5))
-    plt.plot(data.index,data.Close)
+    plt.plot(data.index,data)
     plt.title('{Ticker} Stock Price Over Last Year')
     plt.xlabel('Date')
     plt.ylabel('Stock Price ($)')
@@ -159,7 +159,7 @@ if user_input:
         st.session_state['messages'].append({'role': 'user','content' : f'{user_input}'})
         
         response = openai.ChatCompletion.create(
-            model = 'gpt-3.5=turbo-0613',
+            model = 'gpt-3.5-turbo-0613',
             messages = st.session_state['messages'],
             functions = functions,
             function_call = 'auto'
@@ -199,5 +199,5 @@ if user_input:
         else:
             st.text(response_message['content'])
             st.session_state['messages'].append({'role' : 'assistnat', 'content' : response_message['content'] })            
-    except:
-        st.text('Try Again')
+    except Exception as e:
+        raise e
